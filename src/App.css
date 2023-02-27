@@ -2,41 +2,64 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
 }
 
 .card {
-  padding: 2em;
+  padding: 2em 4rem;
+  background-color: #f6f9fc;
+  width: 42rem;
+  box-sizing: border-box;
 }
 
-.read-the-docs {
-  color: #888;
+.form-input-label {
+  color: #909db0df;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  font-size: 1rem;
+  color: #909db0;
+  padding: 0.6rem;
+  width: 100%;
+  border: 2px solid #909db03f;
+  border-radius: 0.25rem;
+  box-shadow: 0px 1px rgba(0, 0, 0, 0.05);
+}
+
+.form-input::placeholder {
+  color: #909db03f;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.form-button {
+  background-color: #6773e5;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0px 1px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.form-button:hover {
+  background-color: #6773e57f;
+}
+
+.form-button:disabled {
+  background-color: #0005;
+  border: none;
 }

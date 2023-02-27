@@ -1,34 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+// We can use stripe's built-in components, but let's build it from scratch
+import { useEffect, useState } from "react";
+import "./App.css";
+import FormInput from "./components/FormInput";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [number, setNumber] = useState("");
+  const [expDate, setExpDate] = useState("");
+  const [cvc, setCVC] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    setIsValid(
+      number.length === 19 &&
+        cvc.length === 3 &&
+        expDate.length === 7 &&
+        !isNaN(new Date(expDate).getTime())
+    );
+  }, [number, expDate, cvc]);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <FormInput
+          id="card-number"
+          mask="9999 9999 9999 9999"
+          label="Card number"
+          placeholder="1234 1234 1234 1234"
+          value={number}
+          setValue={setNumber}
+        />
+        <FormInput
+          id="exp-date"
+          mask="99 / 99"
+          label="Expiration date"
+          placeholder="MM / DD"
+          value={expDate}
+          setValue={setExpDate}
+          className="mt-4"
+        />
+        <FormInput
+          id="cvc-number"
+          mask="999"
+          label="CVC"
+          placeholder="CVC"
+          value={cvc}
+          setValue={setCVC}
+          className="mt-4"
+        />
+        <button
+          id="pay-button"
+          className="form-button mt-6 mb-4"
+          disabled={!isValid}
+        >
+          PAY
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
